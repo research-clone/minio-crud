@@ -1,0 +1,16 @@
+version: '2'
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  vutt-minio:
+    image: 'bitnami/minio:latest'
+    ports:
+      - '9003:9000'
+      - '9004:9001'
+    environment:
+      - MINIO_ROOT_USER=vutt
+      - MINIO_ROOT_PASSWORD=vuttminio
+    networks:
+      - app-tier
